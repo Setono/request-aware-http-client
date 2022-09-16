@@ -1,0 +1,48 @@
+{
+    "name": "setono/request-aware-http-client",
+    "description": "A library that decorates the http client with request logging",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Joachim Løvgaard",
+            "email": "joachim@loevgaard.dk"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "psr/log": "^1.1 || ^2.0 || ^3.0",
+        "symfony/http-client-contracts": "^1.1 || ^2.3 || ^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
+        "setono/code-quality-pack": "^2.2",
+        "symfony/http-client": "^4.4 || ^5.4 || ^6.0"
+    },
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Setono\\RequestAwareHttpClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Setono\\RequestAwareHttpClient\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "dealerdirect/phpcodesniffer-composer-installer": false
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "analyse": "psalm",
+        "check-style": "ecs check",
+        "fix-style": "ecs check --fix",
+        "phpunit": "phpunit"
+    }
+}
