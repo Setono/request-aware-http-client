@@ -37,7 +37,7 @@ class YourService
             'json' => ['name' => 'John Doe']
         ]);
 
-        $request = $this->httpClient->getRequestFromResponse($response);
+        $request = $this->httpClient->getRequest($response);
 
         echo $request->toString();
         
