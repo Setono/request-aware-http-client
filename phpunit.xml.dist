@@ -2,10 +2,14 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd" bootstrap="vendor/autoload.php"
          colors="true" verbose="true">
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src/</directory>
+        </include>
+    </coverage>
     <testsuites>
         <testsuite name="Setono Request Aware HTTP Client Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <logging/>
 </phpunit>
