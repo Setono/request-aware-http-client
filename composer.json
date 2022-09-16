@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^7.4",
         "ext-json": "*",
         "psr/log": "^1.1 || ^2.0 || ^3.0",
         "symfony/http-client-contracts": "^1.1 || ^2.3 || ^3.1",

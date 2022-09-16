@@ -14,14 +14,14 @@ use Symfony\Contracts\Service\ResetInterface;
 
 final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, ResetInterface, LoggerAwareInterface
 {
-    private HttpClientInterface $decorated;
+    private HttpClientInterface $client;
 
     /** @var list<Request> */
     private array $requests = [];
 
     public function __construct(HttpClientInterface $client)
     {
-        $this->decorated = $client;
+        $this->client = $client;
     }
 
     public function request(string $method, string $url, array $options = []): ResponseInterface
@@ -29,7 +29,7 @@ final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, R
         $request = new Request($method, $url, $options);
         $this->requests[] = $request;
 
-        $response = $this->decorated->request($method, $url, $options);
+        $response = $this->client->request($method, $url, $options);
 
         $request->response = $response;
 
@@ -38,7 +38,7 @@ final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, R
 
     public function stream($responses, float $timeout = null): ResponseStreamInterface
     {
-        return $this->decorated->stream($responses, $timeout);
+        return $this->client->stream($responses, $timeout);
     }
 
     public function getRequests(): array
@@ -77,8 +77,8 @@ final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, R
 
     public function reset(): void
     {
-        if ($this->decorated instanceof ResetInterface) {
-            $this->decorated->reset();
+        if ($this->client instanceof ResetInterface) {
+            $this->client->reset();
         }
 
         $this->requests = [];
@@ -86,8 +86,8 @@ final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, R
 
     public function setLogger(LoggerInterface $logger): void
     {
-        if ($this->decorated instanceof LoggerAwareInterface) {
-            $this->decorated->setLogger($logger);
+        if ($this->client instanceof LoggerAwareInterface) {
+            $this->client->setLogger($logger);
         }
     }
 }
