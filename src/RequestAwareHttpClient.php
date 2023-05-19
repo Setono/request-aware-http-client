@@ -90,4 +90,12 @@ final class RequestAwareHttpClient implements RequestAwareHttpClientInterface, R
             $this->client->setLogger($logger);
         }
     }
+
+    public function withOptions(array $options): static
+    {
+        $clone = clone $this;
+        $clone->client = $clone->client->withOptions($options);
+
+        return $clone;
+    }
 }

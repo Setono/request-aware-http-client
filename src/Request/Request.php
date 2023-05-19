@@ -8,22 +8,13 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final class Request
 {
-    /** @readonly */
-    public string $method;
-
-    /** @readonly */
-    public string $url;
-
-    /** @readonly */
-    public array $options;
-
     public ?ResponseInterface $response = null;
 
-    public function __construct(string $method, string $url, array $options)
-    {
-        $this->method = $method;
-        $this->url = $url;
-        $this->options = $options;
+    public function __construct(
+        public readonly string $method,
+        public readonly string $url,
+        public readonly array $options
+    ) {
     }
 
     public function toString(): string
