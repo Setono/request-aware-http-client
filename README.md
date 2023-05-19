@@ -12,7 +12,7 @@ This library will decorate Symfony HTTP client and make it possible to retrieve 
 ### Step 1: Download
 
 ```bash
-$ composer require setono/request-aware-http-client
+composer require setono/request-aware-http-client
 ```
 ## Usage
 
