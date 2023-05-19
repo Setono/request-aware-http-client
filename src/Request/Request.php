@@ -13,7 +13,7 @@ final class Request
     public function __construct(
         public readonly string $method,
         public readonly string $url,
-        public readonly array $options
+        public readonly array $options,
     ) {
     }
 
@@ -33,7 +33,7 @@ final class Request
             try {
                 $body = json_encode(
                     $this->options['json'],
-                    \JSON_THROW_ON_ERROR | \JSON_HEX_TAG | \JSON_HEX_APOS | \JSON_HEX_AMP | \JSON_HEX_QUOT | \JSON_PRESERVE_ZERO_FRACTION | \JSON_PRETTY_PRINT
+                    \JSON_THROW_ON_ERROR | \JSON_HEX_TAG | \JSON_HEX_APOS | \JSON_HEX_AMP | \JSON_HEX_QUOT | \JSON_PRESERVE_ZERO_FRACTION | \JSON_PRETTY_PRINT,
                 );
             } catch (\JsonException $e) {
                 $body = sprintf('An error happened when trying to encode the JSON body: %s', $e->getMessage());
